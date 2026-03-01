@@ -21,7 +21,7 @@ class SentimentResponse(BaseModel):
     sentiment: str
     rating: int
 
-@app.post("/comment", response_model=SentimentResponse)
+@app.post("/docs", response_model=SentimentResponse)
 async def analyze_comment(data: CommentRequest):
     try:
         scores = analyzer.polarity_scores(data.comment)
