@@ -3,6 +3,15 @@ from pydantic import BaseModel, Field
 from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 app = FastAPI()
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 analyzer = SentimentIntensityAnalyzer()
 
 class CommentRequest(BaseModel):
